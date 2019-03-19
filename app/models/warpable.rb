@@ -2,6 +2,7 @@ class Warpable < ActiveRecord::Base
  
   attr_accessible :image
   attr_accessor :src, :srcmedium # for json generation
+  has_may :image_reactions
 
   # Paperclip; config and production/development specific configs
   # in /config/initializers/paperclip.rb
@@ -343,6 +344,25 @@ class Warpable < ActiveRecord::Base
   def user_id
     Map.find self.map_id
     map.user_id
+  end
+
+  def react(current_user, reaction_type)
+    reaction = ImageReaction.where(user_id: current_user.id, warpable_id: self.id).first_or_create
+    reaction.category = reaction_type
+    reaction.save
+  end
+
+  def is_reacted_by(current_user)
+    !ImageReaction.where(user_id: current_user.id, warpable_id: self.id).empty?
+  end
+
+  def unreact(current_user)
+    reaction = ImageReaction.where(user_id: current_user.id, warpable_id: self.id).first
+    reaction.delete
+  end
+
+  def reaction_count
+    ImageReaction.where(warpable_id: self.id).count
   end
 
   private

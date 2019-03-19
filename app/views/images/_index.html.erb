@@ -27,6 +27,10 @@
           </p>
         </td>
         <td>
+          <div title="Like the image? Give it a star!" id="reaction-button-<%= warpable.id %>" class="btn btn-xs btn-default" >
+            <span id="reaction-star-<%= warpable.id %>" class="fa fa-star<% if !warpable.is_reacted_by(current_user) %>-o<%end%>"></span>
+            <span id="reaction-count-<%= warpable.id %>" > <%= warpable.reaction_count %></span>
+          </div>
           <% if logged_in? && current_user.can_delete?(warpable) %>
             <%= link_to "<i class='fa fa-remove'></i>".html_safe, [@map, warpable], :method => "delete", :class => "btn btn-xs btn-danger", :title => "Delete", :rel=> "tooltip" %>
           <% end %>
@@ -35,6 +39,10 @@
             <a rel="tooltip" title="Download full resolution distorted image (please allow popups)" class="btn btn-xs btn-default img-download img-download-<%= warpable.id %>" data-image="/images/fetch/?url=<%= warpable.image.url(:original) %>"><i class="fa fa-download"></i></a> 
             <div class="full-image-container-<%= warpable.id %>" style="overflow:hidden;width:0;height:0;"><img id="full-img-<%= warpable.id %>" /></div>
             <script>
+              let reaction = new Reaction()
+               <% if current_user %>
+                $("#reaction-button-<%= warpable.id %>").on('click',{imageId: <%=warpable.id%>}, <% if !warpable.is_reacted_by(current_user) %> reaction.reactOnImage <% else %> reaction.unreactOnImage <% end %>);
+              <% end %>
               $('#warpable-<%= warpable.id %> [rel=tooltip]').tooltip();
               $('#locate-warpable-<%= warpable.id %>').click(function(){
                 var center_and_bring_to_front = function() {

@@ -112,6 +112,8 @@ Mapknitter::Application.routes.draw do
 
   # make these resourceful after renaming warpables to images
   post 'images/create/:id' => 'images#create' # used?
+  get 'images/:id/react' => 'images#react' 
+  get 'images/:id/unreact' => 'images#unreact' 
   post 'warper/update' => 'images#update' # legacy for cartagen.js
   post 'images/update' => 'images#update'
   post 'images/delete/:id' => 'images#delete'

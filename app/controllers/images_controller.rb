@@ -132,5 +132,17 @@ class ImagesController < ApplicationController
       redirect_to "/login"
     end
   end
+
+  def react
+    @warpable = Warpable.find params[:id]
+    @warpable.react(current_user, params[:reaction_type])
+    render json: @warpable.reaction_count
+  end
+
+  def unreact
+    @warpable = Warpable.find params[:id]
+    @warpable.unreact(current_user)
+    render json: @warpable.reaction_count
+  end
   
 end
