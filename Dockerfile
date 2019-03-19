@@ -32,7 +32,6 @@ RUN npm install -g bower
 SHELL [ "/bin/bash", "-l", "-c" ]
 WORKDIR /tmp
 ADD Gemfile /tmp/Gemfile
-ADD Gemfile.lock /tmp/Gemfile.lock
 RUN bundle install
 
 # HOTFIX Workaround for mysql2 gem incompatibility with libmariadb-dev
