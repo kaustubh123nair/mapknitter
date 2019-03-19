@@ -8,7 +8,7 @@ def rails_next?
 end
 
 if rails_next?
- gem 'rails', '~> 4.2.7'
+  gem 'rails', '~> 4.2.7'
   gem 'rack', '~> 1.5', '>= 1.5.5'
 else
   gem "rails", "~>3.2"
@@ -21,7 +21,7 @@ gem "friendly_id"
 
 # dependencies
 group :dependencies do
-  gem 'mysql2', '< 0.4'
+  #gem 'mysql2', '< 0.4'
   gem "geokit-rails", "1.1.4"
   gem "image_science", "1.2.6"
   gem "recaptcha", :require => "recaptcha/rails"

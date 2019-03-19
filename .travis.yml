@@ -17,3 +17,6 @@ script:
 env: 
   - 'RAILS_NEXT=0'
   - 'RAILS_NEXT=1'
+allow_failures:
+  env:
+    - 'RAILS_NEXT=1'
