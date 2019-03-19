@@ -17,6 +17,3 @@ script:
 env: 
   - 'RAILS_NEXT=0'
   - 'RAILS_NEXT=1'
-rvm: 
-  - 2.3.0
-  - 2.3.0
