@@ -1,8 +1,19 @@
 source "https://rubygems.org"
 
+
 ruby "2.4.4"
-gem "rails", "~>3.2"
-gem 'rake',  '~> 12.3.2'
+
+def rails_next?
+  ENV['RAILS_NEXT'] == 1
+end
+
+if rails_next?
+ gem 'rails', '~> 4.2.7'
+  gem 'rack', '~> 1.5', '>= 1.5.5'
+else
+  gem "rails", "~>3.2"
+  gem 'rake',  '~> 12.3.2'
+end
 
 gem "will_paginate", "3.1.7"
 gem "will_paginate-bootstrap"
