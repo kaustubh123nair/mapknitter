@@ -7,17 +7,12 @@ install:
   - cp config/config.yml.example config/config.yml
   - cp db/schema.rb.example db/schema.rb
   - docker-compose up -d --build
-  - docker-compose ps
-  - docker-compose exec web bash -cl "ruby -v"
-  - docker-compose exec web bash -cl "rvm list"
   - docker-compose exec web sleep 10
   - docker-compose exec web bash -cl "rake db:setup"
   - docker-compose exec web bash -cl "rake db:migrate"
   - docker-compose exec web bower install --allow-root
 
 script:
-  - docker-compose exec web bash -cl "ls ./test"
-  - docker-compose exec web bash -cl "ls ./test/reports/"
   - docker-compose exec web bash -cl "CI=TRUE GENERATE_REPORTS=true rake test"
   - echo -e '<?xml version="1.0" encoding="UTF-8"?>' > output.xml
   - tail -n +2 -q ./test/reports/TEST*.xml >> output.xml
