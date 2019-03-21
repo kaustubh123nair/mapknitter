@@ -9,7 +9,7 @@ namespace :test do
   task all: :environment do
     if ENV['GENERATE_REPORT'] == 'true'
       require 'ci/reporter/rake/test_unit'
-      Rake::Task["ci:setup:testunit"].execute
+      task :testunit => 'ci:setup:testunit'
     end
   end
 end

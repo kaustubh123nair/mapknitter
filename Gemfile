@@ -20,7 +20,6 @@ group :dependencies do
   gem "RubyInline"
   gem "danger"
   gem 'ci_reporter_test_unit'
-  gem 'minitest-reporters', '~> 1.3.6'
   gem "danger-junit"
   gem "paperclip", "~>4.2.2"
 
