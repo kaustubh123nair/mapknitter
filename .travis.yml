@@ -9,6 +9,7 @@ install:
   - docker-compose up -d --build
   - docker-compose ps
   - docker-compose exec web bash -c "ruby -v"
+  - docker-compose exec web bash -c "rvm list"
   - docker-compose exec web sleep 10
   - docker-compose exec web bash -c "rake db:setup"
   - docker-compose exec web bash -c "rake db:migrate"
