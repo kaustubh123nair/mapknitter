@@ -7,6 +7,8 @@ install:
   - cp config/config.yml.example config/config.yml
   - cp db/schema.rb.example db/schema.rb
   - docker-compose up -d --build
+  - docker-compose ps
+  - docker-compose exec web bash -c "ruby -v"
   - docker-compose exec web sleep 10
   - docker-compose exec web bash -c "rake db:setup"
   - docker-compose exec web bash -c "rake db:migrate"
