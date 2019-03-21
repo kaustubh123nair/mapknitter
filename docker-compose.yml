@@ -9,6 +9,7 @@ db:
     - ../mysql:/var/lib/mysql
 web:
   build: .
+  tty: true
   command: ./start.sh
   environment:
     - RAILS_ENV=production
