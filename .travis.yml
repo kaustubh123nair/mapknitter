@@ -19,7 +19,11 @@ install:
 script:
   - docker-compose exec web bash -cl "CI=TRUE GENERATE_REPORTS=true rake test"
   - echo -e '<?xml version="1.0" encoding="UTF-8"?>' > output.xml
-  - bash -cl "ls ./test/reports/"
+  - ls
+  - ls .
+  - docker-compose exec web bash -cl "ls "
+  - docker-compose exec web bash -cl "ls ."
+  - docker-compose exec web bash -cl "ls ./test/reports/"
   - tail -n +2 -q ./test/reports/TEST*.xml >> output.xml
   - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then danger --verbose; fi'
 
