@@ -7,7 +7,8 @@ require File.expand_path('../config/application', __FILE__)
 Mapknitter::Application.load_tasks
 namespace :test do
   task all: :environment do
-    if ENV['GENERATE_REPORT'] == 'true'
+    ENV['CI_REPORTS'] = "./test/reports"
+    if ENV['GENERATE_REPORTS'] == 'true'
       require 'ci/reporter/rake/test_unit'
       task :testunit => 'ci:setup:testunit'
     end
