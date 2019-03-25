@@ -1,4 +1,5 @@
 ## MapKnitter 2
+[![Coverage Status](https://coveralls.io/repos/github/kaunair/mapknitter/badge.svg?branch=%28HEAD+detached+at+3dd0c43%29)](https://coveralls.io/github/kaunair/mapknitter?branch=%28HEAD+detached+at+3dd0c43%29)
 
 Use Public Lab's open source MapKnitter to upload your own aerial photographs (for example those from balloon or kite mapping: http://publiclab.org/balloon-mapping) and combine them into:
 
@@ -70,9 +71,9 @@ Install rvm for Ruby management (http://rvm.io)
 
 **Ubuntu users:** You may need to enable `Run command as a login shell` in Ubuntu's Terminal, under Profile Preferences > Title and Command. Then close the terminal and reopen it.
 
-Then, use RVM to install version 2.1.2 of Ruby:
+Then, use RVM to install version 2.4.4 of Ruby:
 
-`rvm install 2.1.2`
+`rvm install 2.4.4`
 
 You'll also need **bower** which is available through NPM. To install NPM, you can run:
 
