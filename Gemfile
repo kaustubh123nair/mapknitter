@@ -40,6 +40,7 @@ end
 
 group :test do
   gem 'test-unit'    
+  gem "codeclimate-test-reporter", require: nil
 end
 
 group :development do
